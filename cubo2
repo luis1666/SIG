@@ -1,0 +1,48 @@
+<Schema name="total_estudiantes2">
+  <Cube name="cuboestudiantes2" visible="true" cache="true" enabled="true">
+    <Table name="salidagrado">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idGrado" highCardinality="false" name="dimgrado">
+      <Hierarchy name="grado" visible="true" hasAll="true" allMemberName="todos_los grados" primaryKey="idGrado">
+        <Table name="dimgrado">
+        </Table>
+        <Level name="nivelnombregrado" visible="true" column="grado" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idsexo" highCardinality="false" name="dimsexo">
+      <Hierarchy name="nivel_sexo" visible="true" hasAll="true" allMemberName="todos_sexos" primaryKey="idsexo">
+        <Table name="dimsexo">
+        </Table>
+        <Level name="nivelsexo" visible="true" column="sexo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_departamento" highCardinality="false" name="dimdepartamento">
+      <Hierarchy name="departamento" visible="true" hasAll="true" allMemberName="todos_departametos" primaryKey="id_departamento">
+        <Table name="dimdepartamentos">
+        </Table>
+        <Level name="niveldepartamento" visible="true" column="departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idcatedratico" highCardinality="false" name="dimcatedratico">
+      <Hierarchy name="catedratico" visible="true" hasAll="true" allMemberName="todos_catedraticos" primaryKey="idcatedratico">
+        <Table name="dimcatedratico">
+        </Table>
+        <Level name="niveldocente" visible="true" column="nom_doc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idNivel" name="dimnivel">
+      <Hierarchy name="nivel" visible="true" hasAll="true" allMemberName="todos_los_niveles" primaryKey="idNivel">
+        <Table name="becadonormal" alias="">
+        </Table>
+        <Level name="nivelnivel" visible="true" column="nombre_nivel" uniqueMembers="false">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="total_estudiantes2" column="total_estudiantes" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

@@ -1,0 +1,40 @@
+<Schema name="total_estudiantes3">
+  <Cube name="cuboestudiantes" visible="true" cache="true" enabled="true">
+    <Table name="salidagrado">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idGrado" highCardinality="false" name="dimgrado">
+      <Hierarchy name="grado" visible="true" hasAll="true" allMemberName="todos_los grados" primaryKey="idGrado">
+        <Table name="dimgrado">
+        </Table>
+        <Level name="nivelnombregrado" visible="true" column="grado" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idseccion" highCardinality="false" name="dimseccion">
+      <Hierarchy name="nivel_seccion" visible="true" hasAll="true" allMemberName="todas_secciones" primaryKey="idseccion">
+        <Table name="dimseccion">
+        </Table>
+        <Level name="nivelseccion" visible="true" column="seccion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_departamento" highCardinality="false" name="dimdepartamento">
+      <Hierarchy name="departamento" visible="true" hasAll="true" allMemberName="todos_departametos" primaryKey="id_departamento">
+        <Table name="dimdepartamentos">
+        </Table>
+        <Level name="niveldepartamento" visible="true" column="departamento" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="idincripciones" highCardinality="false" name="dimtiempo">
+      <Hierarchy name="a&#241;o" visible="true" hasAll="true" allMemberName="todos_a&#241;os" primaryKey="ida&#241;o">
+        <Table name="dima&#241;o">
+        </Table>
+        <Level name="nivela&#241;o" visible="true" column="a&#241;o" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="total_estudiantes3" column="total_estudiantes" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
